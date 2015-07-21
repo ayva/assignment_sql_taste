@@ -122,7 +122,39 @@ WHERE year >= 1990 AND year_rank < 4
 ORDER BY year ASC, year_rank ASC
 
 
+Intermediate
 
+
+SELECT MIN(year_rank)
+FROM tutorial.billboard_top_100_year_end
+WHERE artist LIKE 'Phil Collins'
+
+
+SELECT AVG(year_rank)
+FROM tutorial.billboard_top_100_year_end
+WHERE artist LIKE 'Michael Jackson'
+
+SELECT AVG(year_rank)
+FROM tutorial.billboard_top_100_year_end
+WHERE artist LIKE 'Madonna' AND year_rank <=10
+
+SELECT COUNT(artist) AS artist_appearanes,
+        artist
+FROM tutorial.billboard_top_100_year_end
+WHERE year>1985
+GROUP BY artist
+ORDER BY artist_appearanes DESC
+LIMIT 10
+
+SELECT COUNT(song_name) AS hits
+
+FROM tutorial.billboard_top_100_year_end
+WHERE year_rank <= 10 AND artist LIKE 'Elvis%'
+    OR artist LIKE 'Madonna' 
+      OR artist LIKE 'Beatles' 
+      OR artist LIKE 'Elton John' 
+
+ORDER BY hits DESC
 
 
 ### Example
