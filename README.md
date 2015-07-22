@@ -199,6 +199,51 @@ FROM tutorial.aapl_historical_stock_price
 WHERE volume > 25000000
 
 
+SELECT AVG((high+low)/2) AS average,
+      month,
+      AVG(volume) AS avg_volume
+FROM tutorial.aapl_historical_stock_price
+
+GROUP BY month
+HAVING AVG(volume) > 10000000
+
+SELECT       MAX(high) AS highest,
+      MIN(low) AS lowest,
+      AVG(volume) AS average_volume,
+      year
+
+FROM tutorial.aapl_historical_stock_price
+WHERE year BETWEEN 2005 AND 2010
+GROUP BY year
+HAVING AVG(volume) > 10000000
+
+SELECT  AVG((high+low)/2) AS average,
+        month
+FROM tutorial.aapl_historical_stock_price
+WHERE (close-open > 25) OR (open-close > 25)
+GROUP BY month
+
+SELECT  month, AVG(volume)
+FROM tutorial.aapl_historical_stock_price
+WHERE month > 6 AND volume < 10000000
+GROUP BY month 
+ORDER BY month ASC
+
+
+SELECT  month, 
+        AVG(volume) AS avg_volume
+FROM tutorial.aapl_historical_stock_price
+GROUP BY month 
+ORDER BY avg_volume DESC
+
+SELECT  COUNT(DISTINCT month) AS unique_month
+FROM tutorial.aapl_historical_stock_price
+ 
+SELECT  COUNT(DISTINCT year) AS unique_year
+FROM tutorial.aapl_historical_stock_price
+
+SELECT  COUNT(DISTINCT (high+low)/2) AS unique_avg_prices
+FROM tutorial.aapl_historical_stock_price
 
 
 ### Example
