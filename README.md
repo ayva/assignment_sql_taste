@@ -156,6 +156,50 @@ WHERE year_rank <= 10 AND artist LIKE 'Elvis%'
 
 ORDER BY hits DESC
 
+SELECT COUNT(DATE)
+FROM tutorial.aapl_historical_stock_price
+WHERE (high - low) > 5
+
+SELECT MAX(high - low)
+FROM tutorial.aapl_historical_stock_price
+WHERE year = 2012
+
+SELECT date,
+       (high - low) / 2 AS average
+FROM tutorial.aapl_historical_stock_price
+WHERE volume > 10000000
+
+SELECT COUNT(date)
+FROM tutorial.aapl_historical_stock_price
+WHERE year = 2002
+GROUP BY month
+
+SELECT MAX(high),
+       year
+FROM tutorial.aapl_historical_stock_price
+GROUP BY year
+ORDER BY year ASC
+
+SELECT AVG((high + low) / 2) AS avg_price,
+       AVG(volume) AS avg_volume,
+       month
+FROM tutorial.aapl_historical_stock_price
+GROUP BY month
+ORDER BY month ASC
+
+SELECT AVG((high + low) / 2),
+       year
+FROM tutorial.aapl_historical_stock_price
+WHERE year > 2007
+GROUP BY year, month
+ORDER BY year DESC, month ASC
+
+SELECT AVG((high + low) / 2)
+FROM tutorial.aapl_historical_stock_price
+WHERE volume > 25000000
+
+
+
 
 ### Example
 
